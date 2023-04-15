@@ -3,6 +3,8 @@ package br.com.syscrud.model;
 import java.io.Serializable;
 import java.util.List;
 
+import org.hibernate.validator.constraints.Length;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "country")
@@ -19,13 +22,17 @@ public class Country implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name = "id")
 	private Long id;
 	
-	@Column(name = "name", nullable = false, length = 25)
+	@Column(name = "name")
+	@Length(min = 2, max = 50, message = "Name")
+	@NotBlank(message = "Name")
 	private String name;
 	
-	@Column(name = "continent", nullable = false, length = 15)
+	@Column(name = "continent")
+	@Length(min = 2, max = 20)
+	@NotBlank(message = "Continent")
 	private String continent;
 	
 	@OneToMany(mappedBy = "country")
