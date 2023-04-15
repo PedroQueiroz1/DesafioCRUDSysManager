@@ -22,18 +22,17 @@ public class Product implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Long id;
 	
+	@Column(name = "name")
 	private String name;
 	
+	@Column(name = "price")
 	private double price;
 	
 	@OneToMany(mappedBy = "product")
 	private List<Review> reviews;
-
-	
-	
-	
 	
 	
 	public Product() {}
@@ -42,6 +41,14 @@ public class Product implements Serializable{
 		this.name = name;
 		this.price = price;
 		this.reviews = reviews;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getName() {
