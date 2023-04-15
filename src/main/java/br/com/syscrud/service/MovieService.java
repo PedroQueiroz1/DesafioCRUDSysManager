@@ -14,20 +14,20 @@ public class MovieService {
 	@Autowired
 	private MovieRepository repository;
 
-	public Movie create(Movie address) {
-		return repository.save(address);
+	public Movie create(Movie movie) {
+		return repository.save(movie);
 	}
 
 	public List<Movie> findAll() {
 		return repository.findAll();
 	}
 	
-	public Movie update(Movie address) {
+	public Movie update(Movie movie) {
 		//Verifica se o ID é nulo ou se não existe no banco de dados
-		if(address.getId() == null || !repository.existsById(address.getId())) {
+		if(movie.getId() == null || !repository.existsById(movie.getId())) {
 			throw new IllegalArgumentException("Esse endereço não existe no nosso banco de dados!");
 		}
-		return repository.save(address);
+		return repository.save(movie);
 	}
 
 	public void delete(Long id) {
