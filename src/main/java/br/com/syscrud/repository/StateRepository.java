@@ -1,5 +1,11 @@
 package br.com.syscrud.repository;
 
-public class StateRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import br.com.syscrud.model.State;
+
+@Repository
+public interface StateRepository extends JpaRepository<State, Long>{
 
 }
