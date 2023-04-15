@@ -25,8 +25,9 @@ public class Review implements Serializable{
 	@Column(name = "stars")
 	private Integer stars;
 	
-	@Column(name = "reviewer")
-	private String reviewer;
+	@ManyToOne
+	@JoinColumn(name = "author_id")
+	private Author reviewer;
 	
 	@ManyToOne
 	@JoinColumn(name = "product_id")
@@ -35,7 +36,7 @@ public class Review implements Serializable{
 	
 	public Review() {}
 
-	public Review(Integer stars, String reviewer, Product product) {
+	public Review(Integer stars, Author reviewer, Product product) {
 		this.stars = stars;
 		this.reviewer = reviewer;
 		this.product = product;
@@ -57,11 +58,11 @@ public class Review implements Serializable{
 		this.stars = stars;
 	}
 	
-	public String getReviewer() {
+	public Author getReviewer() {
 		return reviewer;
 	}
 
-	public void setReviewer(String reviewer) {
+	public void setReviewer(Author reviewer) {
 		this.reviewer = reviewer;
 	}
 

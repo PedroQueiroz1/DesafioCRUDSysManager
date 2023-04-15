@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -12,24 +14,25 @@ public class Book extends Product implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
-	@Column(name = "author")
-	private String author;
+	@ManyToOne
+	@JoinColumn(name = "author_id")
+	private Author author;
 	
 	@Column(name = "genre")
 	private String genre;
 	
-	public Book(String author, String genre) {
+	public Book(Author author, String genre) {
 		this.author = author;
 		this.genre = genre;
 	}
 
 	public Book() {}
 
-	public String getAuthor() {
+	public Author getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(String author) {
+	public void setAuthor(Author author) {
 		this.author = author;
 	}
 
