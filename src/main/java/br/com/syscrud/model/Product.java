@@ -1,6 +1,7 @@
 package br.com.syscrud.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -9,44 +10,38 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "city")
-public class City implements Serializable{
+@Table(name = "product")
+public class Product implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
 	private Long id;
 	
-	@Column(name = "name")
-	@Length(min = 2, max = 25)
-	@NotBlank
 	private String name;
 	
-	@ManyToOne
-	@JoinColumn(name = "country_id")
-	private Product country;
+	private double price;
+	
+	@OneToMany(mappedBy = "product")
+	private List<Review> reviews;
 
-	public City() {}
+	
+	
+	
+	
+	
+	public Product() {}
 
-	public City(String name, Product country) {
+	public Product(String name, double price, List<Review> reviews) {
 		this.name = name;
-		this.country = country;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
+		this.price = price;
+		this.reviews = reviews;
 	}
 
 	public String getName() {
@@ -57,12 +52,26 @@ public class City implements Serializable{
 		this.name = name;
 	}
 
-	public Product getCountry() {
-		return country;
+	public double getPrice() {
+		return price;
 	}
 
-	public void setCountry(Product country) {
-		this.country = country;
+	public void setPrice(double price) {
+		this.price = price;
 	}
+
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
+	}
+	
+	
+	
+	
+	
+	
 	
 }

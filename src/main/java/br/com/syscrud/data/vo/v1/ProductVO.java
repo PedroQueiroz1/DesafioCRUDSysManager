@@ -1,5 +1,5 @@
 package br.com.syscrud.data.vo.v1;
 
-public class CountryVO {
+public class ProductVO {
 
 }
