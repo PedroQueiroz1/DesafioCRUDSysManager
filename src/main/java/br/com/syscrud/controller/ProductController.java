@@ -14,7 +14,7 @@ import br.com.syscrud.model.Product;
 import br.com.syscrud.service.ProductService;
 
 @RestController
-@RequestMapping("api/product")
+@RequestMapping("/api/product")
 public class ProductController {
 
 	@Autowired
