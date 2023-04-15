@@ -13,7 +13,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "city")
@@ -31,20 +30,14 @@ public class City implements Serializable{
 	@NotBlank
 	private String name;
 	
-	@Column(name = "population", nullable = false)
-	@Length(min = 1, max = 25000000)
-	@NotNull(message = "Population")
-	private Integer population;
-	
 	@ManyToOne
 	@JoinColumn(name = "country_id")
 	private Country country;
 
 	public City() {}
 
-	public City(String name, Integer population, Country country) {
+	public City(String name, Country country) {
 		this.name = name;
-		this.population = population;
 		this.country = country;
 	}
 
