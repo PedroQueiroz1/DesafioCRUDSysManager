@@ -22,9 +22,9 @@ public class ProductService {
 		return repository.findAll();
 	}
 	
-	public Product update(Product product) {
+	public Product update(Long id, Product product) {
 		//Verifica se o ID é nulo ou se não existe no banco de dados
-		if(product.getId() == null || !repository.existsById(product.getId())) {
+		if(id == null || !repository.existsById(id)) {
 			throw new IllegalArgumentException("Esse produto não existe no nosso banco de dados!");
 		}
 		return repository.save(product);
