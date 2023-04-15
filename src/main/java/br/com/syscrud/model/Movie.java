@@ -12,10 +12,10 @@ public class Movie extends Product implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	@Column(name = "author")
-	private String author;
+	@Column(name = "director")
+	private String director;
 	
-	@Column(name = "genre")
-	private String genre;
+	@Column(name = "duration")
+	private Integer duration;
 	
 }
