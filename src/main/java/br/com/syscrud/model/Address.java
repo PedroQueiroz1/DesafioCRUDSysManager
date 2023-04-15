@@ -7,7 +7,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "address")
-public class Address extends City implements Serializable{
+public class Address extends Review implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	

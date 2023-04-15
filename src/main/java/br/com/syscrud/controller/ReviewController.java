@@ -1,5 +1,5 @@
 package br.com.syscrud.controller;
 
-public class CityController {
+public class ReviewController {
 
 }

@@ -2,8 +2,6 @@ package br.com.syscrud.model;
 
 import java.io.Serializable;
 
-import org.hibernate.validator.constraints.Length;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,11 +10,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "city")
-public class City implements Serializable{
+public class Review implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
@@ -25,20 +22,19 @@ public class City implements Serializable{
 	@Column(name = "id")
 	private Long id;
 	
-	@Column(name = "name")
-	@Length(min = 2, max = 25)
-	@NotBlank
-	private String name;
+	@Column(name = "stars")
+	private Integer stars;
 	
 	@ManyToOne
-	@JoinColumn(name = "country_id")
-	private Product country;
+	@JoinColumn(name = "product_id")
+	private Product product;
 
-	public City() {}
+	
+	public Review() {}
 
-	public City(String name, Product country) {
-		this.name = name;
-		this.country = country;
+	public Review(Integer stars, Product product) {
+		this.stars = stars;
+		this.product = product;
 	}
 
 	public Long getId() {
@@ -49,20 +45,20 @@ public class City implements Serializable{
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public Integer getStars() {
+		return stars;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setStars(Integer stars) {
+		this.stars = stars;
 	}
 
-	public Product getCountry() {
-		return country;
+	public Product getProduct() {
+		return product;
 	}
 
-	public void setCountry(Product country) {
-		this.country = country;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 	
 }

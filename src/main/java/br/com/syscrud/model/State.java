@@ -42,11 +42,11 @@ public class State implements Serializable{
 	private Integer population;
 	
 	@OneToMany
-	private List<City> cities;
+	private List<Review> cities;
 
 	public State() {}
 
-	public State(String name, String capital, Integer population, List<City> cities) {
+	public State(String name, String capital, Integer population, List<Review> cities) {
 		this.name = name;
 		this.capital = capital;
 		this.population = population;
@@ -85,11 +85,11 @@ public class State implements Serializable{
 		this.population = population;
 	}
 
-	public List<City> getCities() {
+	public List<Review> getCities() {
 		return cities;
 	}
 
-	public void setCities(List<City> cities) {
+	public void setCities(List<Review> cities) {
 		this.cities = cities;
 	}
 }
