@@ -5,24 +5,24 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.syscrud.model.Address;
-import br.com.syscrud.repository.AddressRepository;
+import br.com.syscrud.model.Movie;
+import br.com.syscrud.repository.MovieRepository;
 
 @Service
-public class AddressService {
+public class MovieService {
 
 	@Autowired
-	private AddressRepository repository;
+	private MovieRepository repository;
 
-	public Address create(Address address) {
+	public Movie create(Movie address) {
 		return repository.save(address);
 	}
 
-	public List<Address> findAll() {
+	public List<Movie> findAll() {
 		return repository.findAll();
 	}
 	
-	public Address update(Address address) {
+	public Movie update(Movie address) {
 		//Verifica se o ID é nulo ou se não existe no banco de dados
 		if(address.getId() == null || !repository.existsById(address.getId())) {
 			throw new IllegalArgumentException("Esse endereço não existe no nosso banco de dados!");
