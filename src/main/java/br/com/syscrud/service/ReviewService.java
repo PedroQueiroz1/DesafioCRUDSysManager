@@ -22,9 +22,9 @@ public class ReviewService {
 		return repository.findAll();
 	}
 	
-	public Review update(Review review) {
+	public Review update(Long id, Review review) {
 		//Verifica se o ID é nulo ou se não existe no banco de dados
-		if(review.getId() == null || !repository.existsById(review.getId())) {
+		if(id == null || !repository.existsById(id)) {
 			throw new IllegalArgumentException("Esse review não existe no nosso banco de dados!");
 		}
 		return repository.save(review);
