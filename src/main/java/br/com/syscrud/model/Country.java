@@ -30,21 +30,26 @@ public class Country implements Serializable{
 	@NotBlank(message = "Name")
 	private String name;
 	
+	@Column(name = "capital")
+	@Length(min = 2, max = 50, message = "Capital")
+	@NotBlank(message = "Capital")
+	private String capital;
+	
 	@Column(name = "continent")
-	@Length(min = 2, max = 20)
+	@Length(min = 2, max = 20, message = "Continent")
 	@NotBlank(message = "Continent")
 	private String continent;
 	
 	@OneToMany(mappedBy = "country")
-	private List<City> cities;
+	private List<State> states;
 	
 	
 	public Country() {}
 	
-	public Country(String name, String continent, List<City> cities) {
+	public Country(String name, String continent, List<State> states) {
 		this.name = name;
 		this.continent = continent;
-		this.cities = cities;
+		this.states = states;
 	}
 
 	public Long getId() {
@@ -76,14 +81,11 @@ public class Country implements Serializable{
 		this.continent = continent;
 	}
 
-
-	public List<City> getCities() {
-		return cities;
+	public List<State> getStates() {
+		return states;
 	}
 
-
-	public void setCities(List<City> cities) {
-		this.cities = cities;
+	public void setStates(List<State> states) {
+		this.states = states;
 	}
-	
 }
